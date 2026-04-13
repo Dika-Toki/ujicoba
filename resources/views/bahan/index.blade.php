@@ -24,7 +24,12 @@
                             <i class="bi bi-box-seam"></i> Bahan Masuk
                         </a>
                     </li>
-                    </ul>
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white {{ request()->is('bahan_keluar') ? 'bg-secondary active' : '' }}" href="{{ route('bahan_keluar.index') }}">
+                            <i class="bi bi-box-seam"></i> Bahan Keluar
+                        </a>
+                    </li>
+                </ul>
             </nav>
 
             <main class="col-md-10 ms-sm-auto px-md-4 py-4">
@@ -78,6 +83,7 @@
              </main>
         </div> 
     </div>
+        <div class="modal fade" id="modalTambah" tabindex="-1" aria-labelledby="modalTambahLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <form action="{{ route('bahan.store') }}" method="POST">
