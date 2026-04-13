@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Inventori Bahan Masuk</title>
+        <title>Inventori Bahan Keluar</title>
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     </head>
 
@@ -36,9 +36,9 @@
         <div class="container mt-5">
             <div class="card shadow">
                 <div class="card-header bg-success text-white d-flex justify-content-between">
-                    <h5 class="mb-0">Daftar Bahan Masuk</h5>
-                    <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#modalTambah">
-                        + Tambah Bahan Masuk
+                    <h5 class="mb-0">Daftar Bahan Keluar</h5>
+                    <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#modalKurang">
+                        + Input Bahan Keluar
                     </button>
                 </div>
                 @if(session('success'))
@@ -55,26 +55,22 @@
                         <th>No</th>
                         <th>Kode Bahan</th>
                         <th>Nama Bahan</th>
-                        <th>Jumlah</th>
-                        <th>Tanggal Masuk</th>
-                        <th>Metode Pembayaran</th>
-                        <th>Jatuh Tempo</th>
+                        <th>Jumlah Keluar</th>
+                        <th>Tanggal Keluar</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse($semua_bahan_masuk as $row)
+                    @forelse($semua_bahan_keluar as $row)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $row->kode_bahan }}</td>
                         <td>{{ $row->nama_bahan }}</td>
-                        <td>{{ $row->jumlah }}</td>
-                        <td>{{ $row->tanggal_masuk }}</td>
-                        <td>{{ $row->metode_pembayaran }}</td>
-                        <td>{{ $row->jatuh_tempo }}</td>
+                        <td>{{ $row->jumlah_keluar }}</td>
+                        <td>{{ $row->tanggal_keluar }}</td>
                         </tr>
                         @empty
                         <tr>
-                        <td colspan="8" class="text-center">Tidak ada data bahan masuk.</td>
+                        <td colspan="8" class="text-center">Tidak ada data bahan keluar.</td>
                             @endforelse
                         </tr>
                     </tbody>
@@ -91,14 +87,14 @@
 
         </div>
 
-        <!-- Modal Tambah Bahan Masuk -->
-        <div class="modal fade" id="modalTambah" tabindex="-1" aria-hidden="true">
+        <!-- Modal Tambah Bahan Keluar -->
+        <div class="modal fade" id="modalKurang" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form action="{{ route('bahan_masuk.store') }}" method="POST">
+                    <form action="{{ route('bahan_keluar.store') }}" method="POST">
                         @csrf
                         <div class="modal-header">
-                            <h5 class="modal-title">Tambah Bahan Masuk Baru</h5>
+                            <h5 class="modal-title">input pemakaian barang</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -111,24 +107,12 @@
                                 <input type="text" name="nama_bahan" class="form-control" required>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Jumlah</label>
-                                <input type="number" name="jumlah" class="form-control" required>
+                                <label class="form-label">Jumlah Keluar</label>
+                                <input type="number" name="jumlah_keluar" class="form-control" required>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Tanggal Masuk</label>
-                                <input type="date" name="tanggal_masuk" class="form-control" required>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Metode Pembayaran</label>
-                                <select name="metode_pembayaran" class="form-control" required>
-                                    <option value="">Pilih Metode Pembayaran</option>
-                                    <option value="Cash">Cash</option>
-                                    <option value="Transfer">Transfer</option>
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Jatuh Tempo</label>
-                                <input type="date" name="jatuh_tempo" class="form-control">
+                                <label class="form-label">Tanggal Keluar</label>
+                                <input type="date" name="tanggal_keluar" class="form-control" required>
                             </div>
                         </div>
                         <div class="modal-footer">

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BahanController;
 use App\Http\Controllers\BahanMasukController;
+use App\Http\Controllers\BahanKeluarController;
 use Illuminate\Support\Facades\Route;
 
 // Untuk menampilkan halaman (GET)
@@ -18,3 +19,7 @@ Route::get('/', [BahanController::class, 'index']);
 // Bahan Masuk
 Route::get('/bahan_masuk', [BahanMasukController::class, 'index'])->name('bahan_masuk.index');
 Route::post('/bahan_masuk/simpan', [BahanMasukController::class, 'store'])->name('bahan_masuk.store');
+
+// Bahan Keluar
+Route::get('/bahan_keluar', [BahanKeluarController::class, 'index'])->name('bahan_keluar.index');
+Route::post('/bahan_keluar/simpan', [BahanKeluarController::class, 'store'])->name('bahan_keluar.store');
